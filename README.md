@@ -21,4 +21,15 @@ B. Images are therefore processed using the following sequence.
    1. Registration - 3D z-stacks (z, y, x; per imaging channel) undergo a simple QC (to skip FOVs that have no discernible DAPI signal and therefore have no tissue of interest). Z-stacks passing the QC step are then registered to the prehybridization DAPI z-stack; this is the reference z-stack for all other z-stacks within the FOV. For more information, please see the QC_Registration_README.md.
    2. Segmentation - the prehybridization DAPI z-stack is segmented in 3D using Cellpose V2 and a refined model specifically trained for this dataset on colorectal cancer epithelia.
    3. Stitching - the prehybridization DAPI z-stacks are stitched together to provide a unified reference frame for eventual spot-decoding and cell assignments (e.g., how to assign cells in the overlapping regions between FOVs).
-   4. Spot-calling   
+   4. Spot-calling - the main part of the pipeline. This has the following steps:
+      1. Z-stacks are flatfield-corrected.
+      2. Relative to the initial prehybridization channels, z-stacks are background corrected.
+      3. Z-stacks are then filtered using a bandpass filter.
+      4. Following normalization across FOVs, peaks are called in 3D using a maximum filter.
+      5. Called peaks are then subsetted to only those within the cell masks. The resulting peaks are used to fit a bilinear model that decides the threshold that separates signal from noise peaks.
+   5. Clean-up - spots that exhibit signal-bleedthrough are removed.
+   6. Cell-typing - using the stitched antibody staining maximum intensity projection (MIP) image, we carry out cell-typing.
+   7. Crypt-segmentation - using the stitched antibody staining MIP image, we carry out crypt segmentation.
+
+## Running the pipeline
+We provide a bash_script that provides a unified workflow for the entire pipeline. All files are located in their respective folders. 
