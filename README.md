@@ -2,7 +2,7 @@
 Workflow for the mCNV_FISH pipeline (Kong, Aow, ..., Prabhakar, submitted)
 
 
-This pipeline contains the code and some utility files necessary for running the mCNV_FISH pipeline. For singularity containers, raw imaging data containing a minimal example, as well as other utility files not uploaded onto Github due to size restrictions, please consult the Zenodo archives (in progress).
+This pipeline contains the code and some utility files necessary for running the mCNV_FISH pipeline. For singularity containers, raw imaging data containing a minimal example, as well as other utility files not uploaded onto Github due to size restrictions, please request from the authors.
 
 The core steps within the imaging analysis pipeline are shown in the figure below:
 
@@ -32,4 +32,9 @@ B. Images are therefore processed using the following sequence.
    7. Crypt-segmentation - using the stitched antibody staining MIP image, we carry out crypt segmentation.
 
 ## Running the pipeline
-We provide a bash_script that provides a unified workflow for the entire pipeline. All files are located in their respective folders. 
+We provide a bash_script that provides a unified workflow for the entire pipeline. The code files are located in their respective folders - we have broken it up into the qc / registration / stitching, as well as spot-calling. 
+
+For reproducibility, we provide the environment .yml file; else the user may request the environment packaged as a singularity .sif file. The same environment is used for all steps except the 3D segmentation step, which uses a Cellpose V2 .sif file and a custom model (likewise available upon request).
+
+## Resources
+Due to the large size of the raw images, the pipeline should be run on a HPC with 24GB RAM per cpu; the spot-calling pipeline (step 4) is designed to run in parallel across FOVs and is frequently run using the following SLURM settings (your HPC may have different specifications): --cpus-per-task 8 --mem 192G.
