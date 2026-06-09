@@ -31,10 +31,15 @@ B. Images are therefore processed using the following sequence.
    6. Cell-typing - using the stitched antibody staining maximum intensity projection (MIP) image, we carry out cell-typing.
    7. Crypt-segmentation - using the stitched antibody staining MIP image, we carry out crypt segmentation.
 
-## Running the pipeline
-We provide a bash_script that provides a unified workflow for the entire pipeline. The code files are located in their respective folders - we have broken it up into the qc / registration / stitching, as well as spot-calling. 
+## Running the pipeline (steps 1-4)
+We provide a bash_script that provides a unified workflow for steps 1-4 of the pipeline. The code files are located in their respective folders - we have broken it up into the qc / registration / stitching, as well as spot-calling. 
+
+We recommend pausing the pipeline after the qc and registration steps (steps 1-2) have been run. This allows the user to examine the output of the registration. In particular, 3D registration may be tricky depending on the imaging parameters and the set-up of the experiment. For example, tissue autofluorescence patterns across channel wavelengths (405nm, 488nm, 561nm, 639nm) can exhibit significant differences which may increase with multiple imaging cycles. Likewise, antibody staining patterns may reveal differential celltype-specific localization within a tissue and may require manual checks to ensure accuracy of the reported z-/y-/x-shifts. 
 
 For reproducibility, we provide the environment .yml file; else the user may request the environment packaged as a singularity .sif file. The same environment is used for all steps except the 3D segmentation step, which uses a Cellpose V2 .sif file and a custom model (likewise available upon request).
 
+## Pipeline postprocessing (steps 5-7)
+We provide jupyter notebooks for postprocessing (steps 5-7).
+
 ## Resources
-Due to the large size of the raw images, the pipeline should be run on a HPC with 24GB RAM per cpu; the spot-calling pipeline (step 4) is designed to run in parallel across FOVs and is frequently run using the following SLURM settings (your HPC may have different specifications): --cpus-per-task 8 --mem 192G.
+Due to the large size of the raw images, steps 1-4 of the pipeline should be run on a HPC with 24GB RAM per cpu; the spot-calling pipeline (step 4) is designed to run in parallel across FOVs and is frequently run using the following SLURM settings (your HPC may have different specifications): --cpus-per-task 8 --mem 192G.
