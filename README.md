@@ -6,7 +6,7 @@ This pipeline contains the code and some utility files necessary for running the
 
 The core steps within the imaging analysis pipeline are shown in the figure below:
 
-<img width="14790" height="8763" alt="Data_analysis_pipeline" src="https://github.com/user-attachments/assets/1072a322-73c9-4d3b-97ca-a279aeb43fae" />
+<img width="14790" height="8763" alt="Data_analysis_pipeline" src="https://github.com/user-attachments/assets/75bd988c-6af7-4b11-95ce-ddddce4a1553" />
 
 ## Data structure
 The following describes the data structure and image processing steps that were used in this project.
