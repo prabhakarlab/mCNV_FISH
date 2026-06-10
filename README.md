@@ -29,7 +29,7 @@ B. Images are therefore processed using the following sequence.
       5. Called peaks are then subsetted to only those within the cell masks. The resulting peaks are used to fit a bilinear model that decides the threshold that separates signal from noise peaks.
    5. Clean-up - spots that exhibit signal-bleedthrough are removed.
    6. Cell-typing - using the stitched antibody staining maximum intensity projection (MIP) image, we carry out cell-typing.
-   7. Crypt-segmentation - using the stitched antibody staining MIP image, we carry out crypt segmentation.
+  
 
 ## Running the pipeline (steps 1-4)
 We provide a bash_script that provides a unified workflow for steps 1-4 of the pipeline. The code files are located in their respective folders - we have broken it up into the qc / registration / stitching, as well as spot-calling. 
@@ -39,7 +39,7 @@ We recommend pausing the pipeline after the qc and registration steps (steps 1-2
 For reproducibility, we provide the environment .yml file; else the user may request the environment packaged as a singularity .sif file. The same environment is used for all steps except the 3D segmentation step, which uses a Cellpose V2 .sif file and a custom model (likewise available upon request).
 
 ## Pipeline postprocessing (steps 5-6)
-We provide jupyter notebooks for the spot bleedthrough removal and the celltyping (steps 5-6). Files for crypt segmentation are in the 'Pipeline_crypt_segmentation' folder.
+We provide jupyter notebooks for the spot bleedthrough removal and the celltyping (steps 5-6).
 
 ## Resources
 Due to the large size of the raw images, steps 1-4 of the pipeline should be run on a HPC with 24GB RAM per cpu; the spot-calling pipeline (step 4) is designed to run in parallel across FOVs and is frequently run using the following SLURM settings (your HPC may have different specifications): --cpus-per-task 8 --mem 192G.
