@@ -38,8 +38,8 @@ We recommend pausing the pipeline after the qc and registration steps (steps 1-2
 
 For reproducibility, we provide the environment .yml file; else the user may request the environment packaged as a singularity .sif file. The same environment is used for all steps except the 3D segmentation step, which uses a Cellpose V2 .sif file and a custom model (likewise available upon request).
 
-## Pipeline postprocessing (steps 5-7)
-We provide jupyter notebooks for postprocessing (steps 5-7).
+## Pipeline postprocessing (steps 5-6)
+We provide jupyter notebooks for the spot bleedthrough removal and the celltyping (steps 5-6). Files for crypt segmentation are in the 'Pipeline_crypt_segmentation' folder.
 
 ## Resources
 Due to the large size of the raw images, steps 1-4 of the pipeline should be run on a HPC with 24GB RAM per cpu; the spot-calling pipeline (step 4) is designed to run in parallel across FOVs and is frequently run using the following SLURM settings (your HPC may have different specifications): --cpus-per-task 8 --mem 192G.
