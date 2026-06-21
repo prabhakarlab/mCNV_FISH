@@ -13,6 +13,7 @@ A demo dataset containing images in .tif format is available upon request (as a 
   - [Stage 3: post-processing](#stage-3-post-processing)
   - [Stage 4: segmentation](#stage-4-segmentation).
   - [Stage 5: stitching](#stage-4-stitching)
+
 These steps are also available as a single-pass run bash script (see '/Pipeline_bash_scripts/pipeline_onepassrun.sh').
   
 ## Input data format
@@ -138,3 +139,142 @@ cp /path/to/mCNV-FISH_gene\ inseq_Dec2023KMS.csv /path/to/your/data/_data/your_d
 ```
 
 ## Expected output
+The following lists the folders and directories created after stages 1-5 are completed:
+```
+ab
+dapi
+filters
+fovs.txt
+fpkm_data.txt
+hyb
+mCNV-FISH_gene inseq_Dec2023KMS.csv
+prehyb
+registration
+segmentation
+stitching
+
+/path/to/your/data/_data/your_dataset/ab:
+ab_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_488_GFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_F080.tif
+ab_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_488_GFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_F081.tif
+ab_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_488_GFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_metadata.txt
+
+/path/to/your/data/_data/your_dataset/filters:
+butter3d_order2_lowcut_100_highcut_300_75_2048_2048.npy
+
+/path/to/your/data/_data/your_dataset/hyb:
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_0_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_0_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_0_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_11_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_11_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_11_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_5_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_5_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_5_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_10_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_10_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_10_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_12_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_12_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_12_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_13_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_13_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_13_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_14_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_14_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_14_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_15_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_15_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_15_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_16_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_16_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_16_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_17_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_17_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_17_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_1_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_1_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_1_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_2_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_2_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_2_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_3_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_3_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_3_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_4_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_4_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_4_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_6_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_6_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_6_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_7_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_7_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_7_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_8_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_8_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_8_metadata.txt
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_9_F080.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_9_F081.tif
+hyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_9_metadata.txt
+
+/path/to/your/data/_data/your_dataset/prehyb:
+prehyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_F080.tif
+prehyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_F081.tif
+prehyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_metadata.txt
+
+/path/to/your/data/_data/your_dataset/registration:
+_Acr_Bits__fov_080.png
+_Acr_Bits__fov_081.png
+FAILED_Reg_report_fov_080_.csv
+FAILED_Reg_report_fov_081_.csv
+FINAL_Reg_fov_080_.csv
+FINAL_Reg_fov_081_.csv
+MIPs_FOV_080.png
+MIPs_FOV_081.png
+Post_reg_alignment_FOV_080_.png
+Post_reg_alignment_FOV_081_.png
+Post_reg_alignment_z_mC_FOV_080__Neg_.png
+Post_reg_alignment_z_mC_FOV_080_.png
+Post_reg_alignment_z_mC_FOV_081__Neg_.png
+Post_reg_alignment_z_mC_FOV_081_.png
+QC_Rpt_fov_080.csv
+QC_Rpt_fov_081.csv
+Reg_attempts_fov_080_.csv
+Reg_attempts_fov_081_.csv
+Reg_report_fov_080_.csv
+Reg_report_fov_081_.csv
+
+/path/to/your/data/_data/your_dataset/segmentation:
+cellpose_modelD
+
+/path/to/your/data/_data/your_dataset/segmentation/cellpose_modelD:
+F080_cp_masks.tif
+F081_cp_masks.tif
+prehyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_F080_MF_F_DS_z_y_x_add_1_1_0.tif
+prehyb_637_Cy5_CF40_Sona 1_561_RFP_CF40_Sona 1_405_DAPI_CF40_Sona 1_F081_MF_F_DS_z_y_x_add_1_1_0.tif
+
+/path/to/your/data/_data/your_dataset/stitching:
+Master_coord_array_3D_Dapi_F80-81.npy
+Master_shiftxcol_3D_Dapi_F80-81.npy
+Master_shiftyrow_3D_Dapi_F80-81.npy
+```
+
+In particular, registration values should be corrected within the 'FINAL_Reg_fov_{FOV}_.csv' files. We attach a screenshot of this .csv file for reference:
+
+<img width="924" height="598" alt="Screenshot 2026-06-21 125709" src="https://github.com/user-attachments/assets/4906e8a4-cc64-41c0-9682-60b762cf784b" />
+
+We briefly describe the column headers:
+- 'x': Final x-shift to be used by the spot-calling pipeline.
+- 'y': Final y-shift to be used by the spot-calling pipeline.
+- 'z': Final z-shift to be used by the spot-calling pipeline.
+- 'ref': The reference prehybridization DAPI image code (we use the code '99' for prehybridization).
+- 'tar': The target z-stack image code.
+- 'refind': from the ref-tar pair of z-stacks, the plane with the brighest DAPI fluorescence.
+- 'tarind': from the ref-tar pair of z-stacks, the corresponding plane from the target.
+- 'shiftz_final': one of three z-shift algorithms used to determine the z-shift.
+- 'diff_max_z': one of three z-shift algorithms used to determine the z-shift.
+- 'pcc_z': one of three z-shift algorithms used to determine the z-shift.
+- 'qc_flags': used to highlight z-stacks with issues (or if no tissue is found).
+- 'comments': used to mark manual changes.
+  
+Corrected values should be placed in the 'x', 'y' or 'z' columns as appropriate (these will be used by the spot-calling pipeline).
