@@ -11,10 +11,13 @@ The core steps within the imaging analysis pipeline are shown in the figure belo
 ## System Requirements
 Due to the large size of the raw images, we recommend running steps 1-4 of the pipeline (description below) on an HPC. On our HPCs, we used the following SLURM settings (note: your HPC may have a different job scheduler engine and different flags): --cpus-per-task 8 --mem 192G.
 
-## Data structure
-The following describes the data structure and image processing steps that were used in this project.
+## Installation
+We have provided the environment file ('mCNV_FISH_environment.yml') in this repository; alternatively, one can run the pipeline using the mCNV_FISH Singularity container and the Cellpose Singularity container, which are available with the demo dataset.
 
-A. Images were acquired under 3 distinct cycles:
+## Dataset structure (also for demo dataset)
+The following describes the data structure and image processing steps that were used in this study.
+
+A. Images were acquired under 3 distinct phases:
    1. Prehybridization - 3 channels (Cy5, Cy3, DAPI).
    2. Hybridization - sequential rounds of 2 channels (Cy5, Cy3).
    3. Antibody staining - 4 channels (Cy5, Cy3, GFP, DAPI).
@@ -39,7 +42,8 @@ We provide a bash_script that provides a unified workflow for steps 1-4 of the p
 
 We recommend pausing the pipeline after the qc and registration steps (steps 1-2) have been run. This allows the user to examine the output of the registration. In particular, 3D registration may be tricky depending on the imaging parameters and the set-up of the experiment. For example, tissue autofluorescence patterns across channel wavelengths (405nm, 488nm, 561nm, 639nm) can exhibit significant differences which may increase with multiple imaging cycles. Likewise, antibody staining patterns may reveal differential celltype-specific localization within a tissue and may require manual checks to ensure accuracy of the reported z-/y-/x-shifts. 
 
-For reproducibility, we provide the environment .yml file; else the user may request the environment packaged as a singularity .sif file. The same environment is used for all steps except the 3D segmentation step, which uses a Cellpose V2 .sif file and a custom model (likewise available upon request).
+## Expected output
+We provide the expected output in the Google drive link (available upon request). For a more detailed guide as to the inputs and expected outputs for each of the steps, please see the step-by-step readme files in this repository (in the 'Pipeline_qc_registration' and 'Pipeline_spot_calling' directories). 
 
 ## Pipeline postprocessing (steps 5-6)
 We provide jupyter notebooks for the spot bleedthrough removal and the celltyping (steps 5-6).
