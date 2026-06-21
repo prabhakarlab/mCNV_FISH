@@ -278,3 +278,6 @@ We briefly describe the column headers:
 - 'comments': used to mark manual changes.
   
 Corrected values should be placed in the 'x', 'y' or 'z' columns as appropriate (these will be used by the spot-calling pipeline).
+
+## Expected running time:
+Of the steps in this stage in the pipeline, the qc_registration step (stage 2) is the longest, ~1-1.5hrs per FOV. For large datasets (e.g. >50 FOVs), we recommend running parallel HPC jobs, each job specifying a different set of FOVs. Cellpose segmentation is dependent on the complexity of the tissue; we ran segmentation of the demo dataset in CPU settings in <1 hr; GPU settings will result in significantly faster run times. The stitching pipeline is generally completable in <2 hrs for a dataset with ~100 FOVs.
