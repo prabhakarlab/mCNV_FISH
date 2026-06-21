@@ -12,7 +12,7 @@ The core steps within the imaging analysis pipeline are shown in the figure belo
 Due to the large size of the raw images, we recommend running steps 1-4 of the pipeline (description below) on an HPC. On our HPCs, we used the following SLURM settings (note: your HPC may have a different job scheduler engine and different flags): --cpus-per-task 8 --mem 192G.
 
 ## Installation
-We have provided the environment file ('mCNV_FISH_environment.yml') in this repository; alternatively, one can run the pipeline using the mCNV_FISH Singularity container and the Cellpose Singularity container, which are available with the demo dataset.
+We have provided the environment file ('mCNV_FISH_environment.yml') in this repository; alternatively, one can run the pipeline using the mCNV_FISH Singularity container and the Cellpose Singularity container, which are available with the demo dataset. The versions of individual packages specified in the .yml file are the versions that were used in this study; we have not tested different versions. Due to the large size of each dataset, this pipeline requires an HPC (see System Requirements (above) for job setting requirements). 
 
 ## Dataset structure (also for demo dataset)
 The following describes the data structure and image processing steps that were used in this study.
@@ -35,17 +35,25 @@ B. Images are therefore processed using the following sequence.
       5. Called peaks are then subsetted to only those within the cell masks. The resulting peaks are used to fit a bilinear model that decides the threshold that separates signal from noise peaks.
    5. Clean-up - spots that exhibit signal-bleedthrough are removed.
    6. Cell-typing - using the stitched antibody staining maximum intensity projection (MIP) image, we carry out cell-typing.
-  
+
+
+We provide a demo dataset (please request the link from the authors) consisting of 2 neighboring FOVs across the entire imaging cycle (prehybridization, hybridization, antibody-staining).  
 
 ## Running the pipeline (steps 1-4)
 We provide a bash_script that provides a unified workflow for steps 1-4 of the pipeline. The code files are located in their respective folders - we have broken it up into the qc / registration / stitching, as well as spot-calling. 
 
 We recommend pausing the pipeline after the qc and registration steps (steps 1-2) have been run. This allows the user to examine the output of the registration. In particular, 3D registration may be tricky depending on the imaging parameters and the set-up of the experiment. For example, tissue autofluorescence patterns across channel wavelengths (405nm, 488nm, 561nm, 639nm) can exhibit significant differences which may increase with multiple imaging cycles. Likewise, antibody staining patterns may reveal differential celltype-specific localization within a tissue and may require manual checks to ensure accuracy of the reported z-/y-/x-shifts. 
 
+## Pipeline postprocessing (steps 5-6)
+We provide jupyter notebooks for the spot bleedthrough removal and the celltyping (steps 5-6).
+
+## Expected demo dataset running time
+Although the demo dataset is designed to be run on an HPC, a desktop computer with a reasonable amount of dedicated RAM (24GB) should be capable of running the pipeline for the demo dataset in ~4 hours.
+
 ## Expected output
 We provide the expected output in the Google drive link (available upon request). For a more detailed guide as to the inputs and expected outputs for each of the steps, please see the step-by-step readme files in this repository (in the 'Pipeline_qc_registration' and 'Pipeline_spot_calling' directories). 
 
-## Pipeline postprocessing (steps 5-6)
-We provide jupyter notebooks for the spot bleedthrough removal and the celltyping (steps 5-6).
+## Additional information
+Additional details are available in the readme files from the Pipeline_qc_registration and Pipeline_spot_calling folders.
 
 
