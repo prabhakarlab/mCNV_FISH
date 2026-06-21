@@ -28,6 +28,12 @@ python /path/to/your/directory/Pipeline_spot_calling/run_postprocess_segmentatio
 
 Step 3: Run the spot-calling itself:
 This step includes steps 5-11 of the overview figure in the Main readme.md. A brief description is given below:
+- Flatfielding - we correct for non-uniform illumination and capture in the microscope.
+- Background subtraction - we remove Cy5 and Cy3 background capture in the prehybridization imaging cycle.
+- Bandpass filtering - we further filter the image using a 3D Butterworth filter.
+- 3D Peak calling - we use a 5 x 5 x 5 maximum filter on the image.
+- Peak subsetting - identified peaks (where the maximum filter == the image) are subsetted to only those that are in a segmented cell mask.
+- Peak thresholding - total aggregated peaks following subsetting, across all FOVs, are separated into signal versus noise through a bilinear fit.  
 ```
 python /path/to/your/directory/Pipeline_spot_calling/run_all_bit.py --data_id your_dataset_id --seg_model cellpose_modelD --run_all_bit --registration_mode precomputed --bit all -p 8 --fov_file fovs.txt --run_notes run_tracker 
 ```
@@ -45,6 +51,7 @@ python /path/to/your/directory/Pipeline_spot_calling/run_all_bit.py --data_id yo
 ```
 
 ## Expected output
+The expected output is a large number of primarily .h5 files; a full list is provided in the 'expected_output_files' file in this folder ('Pipeline_spot_calling'). Note that the output covers FDR <= 0.1, 0.05 and 0.01 thresholds. A user choosing just one FDR threshold value would have significantly fewer .h5 files.
 
 ## Expected running time
 Note that the code in this section will provide time stamps for each step in the pipeline. Overall, for a ~100 FOV dataset, steps 1 and 2 take ~ 1 hr each, step 3 takes ~0.5 hrs per hybridization cycle, and steps 4 and 5 take ~1-2 hrs.
