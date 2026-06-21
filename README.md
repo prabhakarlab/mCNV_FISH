@@ -1,12 +1,15 @@
 # mCNV_FISH
-Workflow for the mCNV_FISH pipeline (Kong, Aow, ..., Prabhakar, submitted)
+Workflow for the mCNV_FISH pipeline (Kong, Aow, ..., Prabhakar, submitted).
 
-
-This pipeline contains the code and some utility files necessary for running the mCNV_FISH pipeline. For singularity containers, raw imaging data containing a minimal example, as well as other utility files not uploaded onto Github due to size restrictions, please request from the authors.
+## Overview
+The pipeline outlined here contains the code for running the mCNV_FISH pipeline. Singularity containers, the Cellpose nuclei model used in this study, a demo dataset, as well as expected outputs from the demo dataset are available upon request (downloadable via a Google drive link, ~55 GB total).
 
 The core steps within the imaging analysis pipeline are shown in the figure below:
 
 <img width="14790" height="8763" alt="Data_analysis_pipeline" src="https://github.com/user-attachments/assets/a744cc50-535e-4af5-94b0-693b109a120b" />
+
+## System Requirements
+Due to the large size of the raw images, we recommend running steps 1-4 of the pipeline (description below) on an HPC. On our HPCs, we used the following SLURM settings (note: your HPC may have a different job scheduler engine and different flags): --cpus-per-task 8 --mem 192G.
 
 ## Data structure
 The following describes the data structure and image processing steps that were used in this project.
@@ -41,5 +44,4 @@ For reproducibility, we provide the environment .yml file; else the user may req
 ## Pipeline postprocessing (steps 5-6)
 We provide jupyter notebooks for the spot bleedthrough removal and the celltyping (steps 5-6).
 
-## Resources
-Due to the large size of the raw images, steps 1-4 of the pipeline should be run on a HPC with 24GB RAM per cpu; the spot-calling pipeline (step 4) is designed to run in parallel across FOVs and is frequently run using the following SLURM settings (your HPC may have different specifications): --cpus-per-task 8 --mem 192G.
+
