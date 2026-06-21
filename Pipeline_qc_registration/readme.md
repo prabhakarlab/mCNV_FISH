@@ -2,7 +2,7 @@
 
 Here we detail the python pipeline to perform QC of the 3D image z-stacks across imaging cycles (prehybridization, hybridization, antibody imaging), registration of z-stacks to the prehybridization DAPI, as well as the stitching pipeline to stitch the prehybridization DAPI z-stacks across FOVs into a unified whole.
 
-## Installation
+## Running the pipeline
 
 A demo dataset containing images in .tif format is available upon request (as a Google drive link). For reproducibility, the link also contains the environment packaged as a singularity .sif file; alternatively, the .yml file is provided in the 'Environment' folder. All python code needed for these steps in the pipeline are provided in the 'Pipeline_qc_registration' folder.
 
